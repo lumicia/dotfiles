@@ -1,0 +1,17 @@
+[user]
+	email = zs.xie@outlook.com
+	name = lumicia
+[alias]
+    a = add
+    aa = add -all
+    b = branch
+    c = commit -m
+    co = checkout
+    cob = checkout -b
+    d = diff --color
+    df = diff
+    f = fetch
+    l = !git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    lo = log --pretty=oneline
+    s = status
+
