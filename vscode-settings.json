@@ -1,0 +1,51 @@
+{
+    "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer-linux",
+    "debug.allowBreakpointsEverywhere": true,
+    "winopacity.opacity": 230,
+    "vim.useSystemClipboard": true,
+    "vim.leader": "<Space>",
+    "vim.insertModeKeyBindings": [
+        {   // 退出编辑模式
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        },
+        {   // 行末插入分号
+            "before": ["x", "x"],
+            "after": ["<Esc>", "$", "a", ";", "<Esc>"]
+        },
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {   // 全选复制
+            "before": ["leader", "v"],
+            "after": ["g", "g", "V", "G", "y"]
+        },
+        {   // 保存
+            "before": ["leader", "w"],
+            "commands": ["workbench.action.files.save"]
+        },
+        {   // 粘贴
+            "before": ["leader", "p"],
+            "after": ["\"", "+", "p"]
+        },
+        {   // 移动到行首
+            "before": ["H"],
+            "after": ["^"]
+        },
+        {   // 移动到行尾
+            "before": ["L"],
+            "after": ["$"]
+        },
+        {   // 多光标
+			"before": ["<C-n>"],
+			"after": ["g", "b"]
+        },
+        {   // 删除光标到行首的内容
+            "before": ["leader", "h"],
+            "after": ["d", "^"]
+        },
+        {   // 删除光标到行尾的内容
+            "before":["leader", "l"],
+            "after": ["d", "$"]
+        },
+    ]
+}
