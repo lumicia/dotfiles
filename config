@@ -1,0 +1,35 @@
+[registry]
+
+
+[source.crates-io]
+registry = "https://github.com/rust-lang/crates.io-index"
+replace-with = 'tuna'
+#replace-with = 'ustc'
+#replace-with = 'sjtu'
+#replace-with = 'rustcc'
+
+# 清华
+[source.tuna]
+registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git"
+
+# 中科大
+[source.ustc]
+registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+
+# 上交
+[source.sjtu]
+registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index"
+
+# rustcc 社区
+[source.rustcc]
+registry = "git://crates.rustcc.cn/crates.io-index"
+[alias]
+b = "build"
+t = "test"
+r = "run"
+rr = "run --release"
+ben = "bench"
+space_example = ["run", "--release", "--", "\"command list\""]
+u = "update"
+i = "install"
+pkg = "package"
