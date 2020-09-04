@@ -2,6 +2,9 @@
     "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer-linux",
     "debug.allowBreakpointsEverywhere": true,
     "winopacity.opacity": 230,
+    "workbench.colorCustomizations": {
+        "terminal.background": "#323D46"
+    },
     "vim.useSystemClipboard": true,
     "vim.leader": "<Space>",
     "vim.insertModeKeyBindings": [
@@ -41,11 +44,11 @@
         },
         {   // 删除光标到行首的内容
             "before": ["leader", "h"],
-            "after": ["d", "^"]
+            "after": ["d", "^", "a"]
         },
         {   // 删除光标到行尾的内容
             "before":["leader", "l"],
-            "after": ["d", "$"]
+            "after": ["d", "$", "a"]
         },
     ]
 }
