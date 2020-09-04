@@ -47,8 +47,12 @@
             "after": ["d", "^", "a"]
         },
         {   // 删除光标到行尾的内容
-            "before":["leader", "l"],
+            "before": ["leader", "l"],
             "after": ["d", "$", "a"]
         },
+        {
+            "before": ["leader", "s"],
+            "after": [":", "%", "s", "/", "/", "g", "<Left>", "<Left>"]
+        }
     ]
 }
