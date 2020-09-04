@@ -1,2 +1,3 @@
 # dotfiles
-backup some configure files.
+
+配置文件备份。
