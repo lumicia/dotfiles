@@ -25,9 +25,9 @@ AllowShortCaseLabelsOnASingleLine:	false
 # 允许短的函数放在同一行: None, InlineOnly(定义在类中), Empty(空函数), Inline(定义在类中，空函数), All
 AllowShortFunctionsOnASingleLine:	Empty
 # 允许短的 if 语句保持在同一行
-AllowShortIfStatementsOnASingleLine:	false
+AllowShortIfStatementsOnASingleLine:	true
 # 允许短的循环保持在同一行
-AllowShortLoopsOnASingleLine:	false
+AllowShortLoopsOnASingleLine:	true
 # 总是在定义返回类型后换行(deprecated)
 AlwaysBreakAfterDefinitionReturnType:	None
 # 总是在返回类型后换行: None, All, TopLevel(顶级函数，不包括在类中的函数), 
@@ -75,7 +75,7 @@ BreakBeforeBraces:	Custom
 # 在三元运算符前换行
 BreakBeforeTernaryOperators:	true
 # 在构造函数的初始化列表的逗号前换行
-BreakConstructorInitializersBeforeComma:	false
+BreakConstructorInitializersBeforeComma:	true
 # 每行字符的限制，0 表示没有限制
 ColumnLimit:	80
 # 描述具有特殊意义的注释的正则表达式，它不应该被分割为多行或以其它方式改变
@@ -110,7 +110,7 @@ IndentCaseLabels:	false
 # 缩进宽度
 IndentWidth:	4
 # 函数返回类型换行时，缩进函数声明或函数定义的函数名
-IndentWrappedFunctionNames:	false
+IndentWrappedFunctionNames:	true
 # 保留在块开始处的空行
 KeepEmptyLinesAtTheStartOfBlocks:	true
 # 开始一个块的宏的正则表达式
@@ -124,7 +124,7 @@ NamespaceIndentation:	Inner
 # 使用 ObjC 块时缩进宽度
 ObjCBlockIndentWidth:	4
 # 在 ObjC 的 @property 后添加一个空格
-ObjCSpaceAfterProperty:	false
+ObjCSpaceAfterProperty:	true
 # 在 ObjC 的 protocol 列表前添加一个空格
 ObjCSpaceBeforeProtocolList:	true
 # 在 call( 后对函数调用换行的penalty
@@ -146,7 +146,7 @@ ReflowComments:	true
 # 允许排序 #include
 SortIncludes:	true
 # 在 C 风格类型转换后添加空格
-SpaceAfterCStyleCast:	false
+SpaceAfterCStyleCast:	true
 # 在赋值运算符之前添加空格
 SpaceBeforeAssignmentOperators:	true
 # 开圆括号之前添加一个空格: Never, ControlStatements, Always
