@@ -1,9 +1,15 @@
 {
     "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer-linux",
+    // "rust-analyzer.updates.channel": "nightly",
+    "rust-analyzer.trace.extension": true,
     "debug.allowBreakpointsEverywhere": true,
-    "winopacity.opacity": 230,
+    "tabnine.experimentalAutoImports": true,
+    "rust-analyzer.assist.importPrefix": "by_crate",
     "workbench.colorCustomizations": {
         "terminal.background": "#323D46"
+    },
+    "files.watcherExclude": {
+        "**/target/**": true
     },
     "vim.useSystemClipboard": true,
     "vim.leader": "<Space>",
@@ -50,9 +56,11 @@
             "before": ["leader", "l"],
             "after": ["d", "$", "a"]
         },
-        {
+        {   // 替换
             "before": ["leader", "s"],
             "after": [":", "%", "s", "/", "/", "g", "<Left>", "<Left>"]
         }
-    ]
+    ],
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 55
 }
