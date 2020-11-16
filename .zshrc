@@ -101,6 +101,7 @@ source $ZSH/oh-my-zsh.sh
 #
 alias nv=nvim
 alias gpp=g++
+alias cf="clang-format -style=file -i"
 eval "$(starship init zsh)"
 source /home/xzs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
