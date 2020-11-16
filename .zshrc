@@ -99,6 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+alias nv=nvim
+alias gpp=g++
 eval "$(starship init zsh)"
 source /home/xzs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
