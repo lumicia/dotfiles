@@ -8,6 +8,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 
+" Python
+Plug 'tell-k/vim-autopep8'
+
 " Rust
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
@@ -70,17 +73,19 @@ vmap <tab> >gv
 vmap <s-tab> <gv
 
 inoremap jk <Esc>
-nnoremap sr :%s//g<Left><Left>  " globally replace
-inoremap xx <ESC>$a; " insert ; in the end of the line
-nmap H ^ " move to the head of the line
-nmap L $ " move to the end of the line
+" insert ; in the end of the line
+inoremap xx <ESC>$a; 
+" move to the head of the line
+nmap H ^ 
+" move to the end of the line
+nmap L $ 
 
 " Make <TAB> used for trigger completion, completion confirm, snippet expand and jump like VS Code.
-inoremap <silent><expr> <TAB>
-    \ pumvisible() ? coc#_select_confirm() :
-    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippet-expand-jump',''])\<CR>" :
-    \ <SID>check_back_space() ? "\<TAB>" :
-    \ coc#refresh()
+"inoremap <silent><expr> <TAB>
+"    \ pumvisible() ? coc#_select_confirm() :
+"    \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippet-expand-jump',''])\<CR>" :
+"    \ <SID>check_back_space() ? "\<TAB>" :
+"    \ coc#refresh()
 
 function! s:check_back_space() abort
     let col = col('.') - 1
@@ -102,8 +107,17 @@ nmap <leader>w :w<CR>
 nmap <leader>p \"+p
 nmap <leader>y \"+y
 nmap <leader>q :q<CR>
-nmap <leader>h d^a " delete to head of the line
-nmap <leader>l d$a " delete to tail of the line
+" globally replace
+nnoremap <leader>s :%s//g<Left><Left>  
+" delete to head of the line
+nmap <leader>h d^a 
+" delete to tail of the line
+nmap <leader>l d$a 
+" navigate buffers
+nnoremap [b :bprevious<CR>
+nnoremap ]b :bnext<CR>
+nnoremap [B :bfirst<CR>
+nnoremap ]B :blast<CR>
 
 " brace indent
 imap {<CR> {<CR>}<ESC>O
@@ -162,9 +176,12 @@ if has('nvim')
 endif
 
 " vim-autoformat settings
-let g:python3_host_prog = /usr/bin/python3.8
+let g:python3_host_prog = '/usr/bin/python3.8'
 let g:formatpath = ['/usr/bin/clang-format-10']
 let g:formatdef_my_clang = '"clang-format"'
 let g:formatters_cpp = ['my_clang']
 let g:formatters_c = ['my_clang']
 noremap <F9> :Autoformat<cr>
+
+" autopep8 settings
+autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
