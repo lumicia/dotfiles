@@ -7,9 +7,12 @@ Plug 'liuchengxu/eleline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
+Plug 'Yggdroot/indentLine'
+Plug 'github/copilot.vim'
 
 " Python
 Plug 'tell-k/vim-autopep8'
+Plug 'psf/black'
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -176,12 +179,13 @@ if has('nvim')
 endif
 
 " vim-autoformat settings
-let g:python3_host_prog = '/usr/bin/python3.8'
+let g:python3_host_prog = '/usr/bin/python3.9'
 let g:formatpath = ['/usr/bin/clang-format-10']
 let g:formatdef_my_clang = '"clang-format"'
 let g:formatters_cpp = ['my_clang']
 let g:formatters_c = ['my_clang']
-noremap <F9> :Autoformat<cr>
+let g:fomatters_python = ['black']
+noremap <F9> :Autoformat<CR>
 
-" autopep8 settings
-autocmd FileType python noremap <buffer> <F8> :call Autopep8()<CR>
+" coc-explorer settings
+nmap <leader>x <Cmd>CocCommand explorer<CR>
