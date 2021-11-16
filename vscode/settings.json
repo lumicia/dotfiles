@@ -1,27 +1,41 @@
 {
-    "rust-analyzer.serverPath": "~/.cargo/bin/rust-analyzer-linux",
-    // "rust-analyzer.updates.channel": "nightly",
-    "rust-analyzer.trace.extension": true,
-    "debug.allowBreakpointsEverywhere": true,
-    "tabnine.experimentalAutoImports": true,
-    "rust-analyzer.assist.importPrefix": "by_crate",
+    // workbench settings
+    "workbench.colorTheme": "Solarized Light Alternate",
     "workbench.colorCustomizations": {
-        "terminal.background": "#323D46"
+        "terminal.background" : "#383737"
     },
-    "files.watcherExclude": {
-        "**/target/**": true
-    },
+    "workbench.iconTheme": "vscode-icons",
+
+    // terminal settings
+    "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.defaultProfile.linux": "zsh",
+    "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
+    "terminal.integrated.fontSize": 18,
+
+    // editor settings
+    "editor.tabCompletion": "on",
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.fontSize": 18,
+    "editor.fontFamily": "JetBrainsMono Nerd Font Mono, Microsoft YaHei, Consolas, 'Courier New', monospace",
+    "editor.inlineSuggest.enabled": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "editor.wordWrapColumn": 70,
+    "markdown.preview.fontSize": 20,
+
+    // vim settings
+    "vim.leader": "Space",
     "vim.useSystemClipboard": true,
-    "vim.leader": "<Space>",
     "vim.insertModeKeyBindings": [
         {   // 退出编辑模式
             "before": ["j", "k"],
             "after": ["<Esc>"]
         },
-        {   // 行末插入分号
-            "before": ["x", "x"],
-            "after": ["<Esc>", "$", "a", ";", "<Esc>"]
-        },
+        // {   // 行末插入分号
+        //     "before": ["x", "x"],
+        //     "after": ["<Esc>", "$", "a", ";", "<Esc>"]
+        // },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {   // 全选复制
@@ -31,6 +45,10 @@
         {   // 保存
             "before": ["leader", "w"],
             "commands": ["workbench.action.files.save"]
+        },
+        {   // 复制
+            "before": ["leader", "y"],
+            "after": ["\"", "+", "y"]
         },
         {   // 粘贴
             "before": ["leader", "p"],
@@ -61,6 +79,4 @@
             "after": [":", "%", "s", "/", "/", "g", "<Left>", "<Left>"]
         }
     ],
-    "editor.wordWrap": "wordWrapColumn",
-    "editor.wordWrapColumn": 55
 }
