@@ -119,3 +119,11 @@ export PATH=$PATH:$HOME/.local/bin
 export JAVA_HOME=/usr/lib/jvm/java-14-openjdk-amd64
 export CLASSPATH=.:${JAVA_HOME}/lib
 export PATH=${JAVA_HOME}/bin:$PATH
+
+# ghcup
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+alias ghc=ghc-8.8.4
+alias ghci=ghci-8.8.4
+
+# opam
+export PATH=$PATH:$HOME/.opam/bin
