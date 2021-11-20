@@ -1,0 +1,9 @@
+{
+    "clang-format.language.cpp.fallbackStyle": "llvm",
+    "rust-analyzer.server.path": "~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
+    "rust-analyzer.trace.server": "verbose",
+    "python.formatting.provider": "black",
+    "python.formatting.blackArgs": [
+        "--skip-string-nomalization",
+    ]
+}
