@@ -1,9 +1,30 @@
 {
+    // C/C++
     "clang-format.language.cpp.fallbackStyle": "llvm",
+
+    // Rust
     "rust-analyzer.server.path": "~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
     "rust-analyzer.trace.server": "verbose",
+
+    // Python
+    "python.languageServer": "Pylance",
     "python.formatting.provider": "black",
     "python.formatting.blackArgs": [
-        "--skip-string-nomalization",
-    ]
+        "--skip-string-normalization",
+    ],
+    "python.formatting.blackPath": "~/.local/bin/black",
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace",
+    "python.linting.flake8Enabled": true,
+    "python.linting.lintOnSave": true,
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "tests"
+    ],
 }
