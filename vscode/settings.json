@@ -1,19 +1,25 @@
 {
-    // workbench settings
+    // Workbench settings
     "workbench.colorTheme": "Solarized Light Alternate",
     "workbench.colorCustomizations": {
-        "terminal.background" : "#383737"
+        "terminal.background": "#383737",
+        "[Default Dark+]": {
+            "editorBracketHighlight.foreground3": "#9CDCFE",
+            "editorBracketHighlight.foreground4": "#F3FD00",
+            "editorBracketHighlight.foreground5": "#F47D9F",
+            "editorBracketHighlight.foreground6": "#A5ADFE"
+        }
     },
     "workbench.iconTheme": "vscode-icons",
 
-    // terminal settings
+    // Terminal settings
     "terminal.external.windowsExec": "C:\\Program Files\\PowerShell\\7\\pwsh.exe",
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     "terminal.integrated.defaultProfile.linux": "zsh",
     "terminal.integrated.fontFamily": "JetBrainsMono Nerd Font Mono",
     "terminal.integrated.fontSize": 18,
 
-    // editor settings
+    // Editor settings
     "editor.tabCompletion": "on",
     "editor.tabSize": 4,
     "editor.insertSpaces": true,
@@ -22,15 +28,72 @@
     "editor.inlineSuggest.enabled": true,
     "editor.wordWrap": "wordWrapColumn",
     "editor.wordWrapColumn": 70,
-    "markdown.preview.fontSize": 20,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.semanticTokenColorCustomizations": {
+        "enabled": true,
+        "rules": {
+            "*.abstract": {
+                "fontStyle": "italic",
+            },
+            "*.readonly": {
+                "fontStyle": "bold",
+            },
+            "*.static": {
+                "fontStyle": "bold",
+            },
+            "class": {
+                "fontStyle": "bold",
+                "foreground": "#729de3",
+            },
+            "comment": "#505050",
+            "enum": "#397797",
+            "enumMember": "#397797",
+            "function": {
+                "foreground": "#e5b124",
+            },
+            "macro": {
+                "foreground": "#4fc1ff",
+                "fontStyle": "bold",
+            },
+            "method": {
+                "foreground": "#e5b124",
+                "fontStyle": "underline",
+            },
+            "namespace": {
+                "foreground": "#00d780",
+                "fontStyle": "bold",
+            },
+            "parameter": {
+                "foreground": "#306b72",
+            },
+            "parameter.readonly": {
+                "foreground": "#78d1ff",
+            },
+            "property": {
+                "fontStyle": "underline",
+                "foreground": "#7ca6b7",
+            },
+            "typeParameter": "#31a567",
+            "variable": "#26cdca",
+            "variable.readonly": {
+                "foreground": "#8f5daf",
+                "fontStyle": "bold",
+            },
+        }
+    },
 
-    // vim settings
+    // Vim settings
     "vim.leader": "Space",
     "vim.useSystemClipboard": true,
     "vim.insertModeKeyBindings": [
-        {   // 退出编辑模式
-            "before": ["j", "k"],
-            "after": ["<Esc>"]
+        { // 退出编辑模式
+            "before": [
+                "j",
+                "k"
+            ],
+            "after": [
+                "<Esc>"
+            ]
         },
         // {   // 行末插入分号
         //     "before": ["x", "x"],
@@ -38,45 +101,119 @@
         // },
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
-        {   // 全选复制
-            "before": ["leader", "v"],
-            "after": ["g", "g", "V", "G", "y"]
+        { // 全选复制
+            "before": [
+                "leader",
+                "v"
+            ],
+            "after": [
+                "g",
+                "g",
+                "V",
+                "G",
+                "y"
+            ]
         },
-        {   // 保存
-            "before": ["leader", "w"],
-            "commands": ["workbench.action.files.save"]
+        { // 保存
+            "before": [
+                "leader",
+                "w"
+            ],
+            "commands": [
+                "workbench.action.files.save"
+            ]
         },
-        {   // 复制
-            "before": ["leader", "y"],
-            "after": ["\"", "+", "y"]
+        { // 复制
+            "before": [
+                "leader",
+                "y"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "y"
+            ]
         },
-        {   // 粘贴
-            "before": ["leader", "p"],
-            "after": ["\"", "+", "p"]
+        { // 粘贴
+            "before": [
+                "leader",
+                "p"
+            ],
+            "after": [
+                "\"",
+                "+",
+                "p"
+            ]
         },
-        {   // 移动到行首
-            "before": ["H"],
-            "after": ["^"]
+        { // 移动到行首
+            "before": [
+                "H"
+            ],
+            "after": [
+                "^"
+            ]
         },
-        {   // 移动到行尾
-            "before": ["L"],
-            "after": ["$"]
+        { // 移动到行尾
+            "before": [
+                "L"
+            ],
+            "after": [
+                "$"
+            ]
         },
-        {   // 多光标
-			"before": ["<C-n>"],
-			"after": ["g", "b"]
+        { // 多光标
+            "before": [
+                "<C-n>"
+            ],
+            "after": [
+                "g",
+                "b"
+            ]
         },
-        {   // 删除光标到行首的内容
-            "before": ["leader", "h"],
-            "after": ["d", "^", "a"]
+        { // 删除光标到行首的内容
+            "before": [
+                "leader",
+                "h"
+            ],
+            "after": [
+                "d",
+                "^",
+                "a"
+            ]
         },
-        {   // 删除光标到行尾的内容
-            "before": ["leader", "l"],
-            "after": ["d", "$", "a"]
+        { // 删除光标到行尾的内容
+            "before": [
+                "leader",
+                "l"
+            ],
+            "after": [
+                "d",
+                "$",
+                "a"
+            ]
         },
-        {   // 替换
-            "before": ["leader", "s"],
-            "after": [":", "%", "s", "/", "/", "g", "<Left>", "<Left>"]
+        { // 替换
+            "before": [
+                "leader",
+                "s"
+            ],
+            "after": [
+                ":",
+                "%",
+                "s",
+                "/",
+                "/",
+                "g",
+                "<Left>",
+                "<Left>"
+            ]
         }
     ],
+
+    // Misc settings
+    "better-comments.multilineComments": true,
+    "winopacity.opacity": 235,
+    "git.autofetch": true,
+    "markdown.preview.fontSize": 20,
+    "leetcode.workspaceFolder": "",
 }

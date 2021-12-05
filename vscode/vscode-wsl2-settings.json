@@ -1,6 +1,44 @@
 {
-    // C/C++
-    "clang-format.language.cpp.fallbackStyle": "llvm",
+    // Clangd
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "clangd.arguments": [
+        "--background-index",
+        "--compiler-commands-dir=build",
+        "-j=12",
+        "--query-driver=/usr/bin/clang++",
+        "--clang-tidy",
+        "--all-scopes-completion",
+        "--completion-style=detailed",
+        "--header-insertion=iwyu",
+        "--pch-storage=memory",
+        "--enable-config",
+        "--config-file=~/.config/clangd/config.yaml",
+    ],
+
+    // CMake
+    "cmake.configureOnEdit": false,
+    "cmake.configureOnOpen": true,
+    "cmake.copyCompileCommands": "",
+
+    // LLDB
+    "lldb.commandCompletions": true,
+    "lldb.dereferencePointers": true,
+    "lldb.evaluateForHovers": true,
+    "lldb.launch.expressions": "simple",
+    "lldb.showDisassembly": "never",
+    "lldb.verboseLogging": true,
+
+    // Code Runner
+    "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
+    "code-runner.saveFileBeforeRun": true, // run code前保存
+    "code-runner.preserveFocus": false, // 若为false，run code后光标会聚焦到终端上。如果需要频繁输入数据可设为false
+    "code-runner.clearPreviousOutput": true, // 每次run code前清空属于code runner的终端消息，默认false
+    "code-runner.ignoreSelection": true, // 默认为false，效果是鼠标选中一块代码后可以单独执行，但C是编译型语言，不适合这样用
+    "code-runner.fileDirectoryAsCwd": true, // 将code runner终端的工作目录切换到文件目录再运行，对依赖cwd的程序产生影响；如果为false，executorMap要加cd $dir
+    "code-runner.executorMap": {
+        "c": "/usr/bin/clang $fileName -o $workspaceRoot/build/debug.out -g -Wall -Wextra -pthread -fuse-ld=lld -fstandalone-debug -fcolor-diagnostics -fparse-all-comments -stdlib=libc++ -std=c11 && $workspaceRoot/build/debug.out",
+        "cpp": "/usr/bin/clang++ $fileName -o $workspaceRoot/build/debug.out -g -Wall -Wextra -pthread -fuse-ld=lld -fstandalone-debug -fcolor-diagnostics -fparse-all-comments -stdlib=libc++ -std=c++20 && $workspaceRoot/build/debug.out"
+    },
 
     // Rust
     "rust-analyzer.server.path": "~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
@@ -19,12 +57,23 @@
             "source.organizeImports": true,
         },
     },
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.diagnosticMode": "workspace",
     "python.linting.flake8Enabled": true,
     "python.linting.lintOnSave": true,
+    "python.linting.flake8Args": [
+        "extend-ignore = E203"
+    ],
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticMode": "workspace",
     "python.testing.pytestEnabled": true,
     "python.testing.pytestArgs": [
         "tests"
     ],
+
+    // Haskell
+    "[haskell]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports": true,
+        },
+    },
 }
