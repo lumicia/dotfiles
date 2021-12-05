@@ -1,0 +1,65 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            // 配置名称，将会在启动配置的下拉菜单中显示
+            "name": "LLDB: 编译和调试单文件", 
+            // 配置类型，不同编程语言不同,该项由CodeLLDB插件提供
+            "type": "lldb", 
+            // 可以为launch（启动）或attach（附加） 
+            "request": "launch", 
+            // 将要进行调试的程序的路径
+            "program": "${workspaceFolder}/build/debug.out",
+            "args": [], 
+            "stopOnEntry": false, 
+            // 调试程序时的工作目录，此为工作区文件夹；改成${fileDirname}可变为文件所在目录
+            "cwd": "${fileDirname}", 
+            "externalConsole": false, 
+            "internalConsoleOptions": "neverOpen", 
+            "MIMode": "lldb", 
+            "miDebuggerPath": "/usr/bin/lldb", 
+            "setupCommands": [
+                { 
+                    "description": "Enable pretty-printing for lldb", 
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ],
+            // 指定调试前要运行的task，与tasks.json中的label对应
+            "preLaunchTask": "Clang: 编译单文件" 
+        },
+        {
+            "name": "LLDB: 编译和调试多文件",
+            "type": "lldb", 
+            "request": "launch",
+            "program": "${workspaceFolder}/build/debug.out",
+            "args": [],
+            "stopOnEntry": false,
+            "cwd": "${fileDirname}",
+            "externalConsole": false,
+            "internalConsoleOptions": "neverOpen",
+            "MIMode": "lldb",
+            "miDebuggerPath": "/usr/bin/lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for lldb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": false
+                }
+            ],
+            "preLaunchTask": "Clang: 编译多文件"
+        },
+        {
+            "name": "LLDB: 调试已编译的可执行文件",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/debug.out",
+            "args": [],
+            "stopOnEntry": false,
+            "cwd": "${fileDirname}",
+            "internalConsoleOptions": "neverOpen",
+            "environment": [],
+            "externalConsole": false,
+        }
+    ]
+}

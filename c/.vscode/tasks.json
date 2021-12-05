@@ -1,0 +1,111 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            // 任务名称，与launch.json的preLaunchTask相对应
+            "label": "Clang: 编译单文件", 
+            // 可以为process或shell
+            "type": "shell", 
+            // 要使用的编译器路径，C语言用clang
+            "command": "/usr/bin/clang", 
+            // 编译器后附的参数，反映在终端里即"clang+ arg1 arg2 arg3..."
+            "args": [
+                // 要编译的文件
+                "${file}",
+                // 指定输出文件名极其路径，os X和Linux下不加该参数则默认输出a.out，win下默认a.exe
+                "-o", 
+                "${workspaceFolder}/build/debug.out", 
+                // 生成和调试有关的信息, 如果加上该参数，编译后不仅会生成.out可执行文件，还会生成后缀为.out.dSYM的文件夹，如果不加，调试器会忽略你设的断点
+                "-g",
+                // 开启额外警告
+                "-Wall", 
+                "-Wextra",
+                // 多线程支持
+                "-pthread",
+                // 使用 LLVM lld 链接器而不是默认链接器
+                "-fuse-ld=lld",
+                // 启用 debug 信息优化
+                "-fstandalone-debug",
+                // 诊断信息着色
+                "-fcolor-diagnostics",
+                // 分析所有注释(这其实只需告诉 Clangd ，即添加到 compile_commands.json 中)
+                // Clang 默认只分析 Doxygen 风格("/**", "///"开头)的注释
+                "-fparse-all-comments",
+                // 静态链接libc++，Linux下似乎会出错，出错的话删掉这行就行
+                "-stdlib=libc", 
+                // 这里采用c++20标准，C语言改成"-std=c11"
+                "-std=c11", 
+            ], // 编译的命令，其实相当于VSC帮你在终端中输了这一串东西
+            "group": {
+                "kind": "build",
+                "isDefault": true // 不为true时command shift B快捷键就要手动选择了
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "echo": true,
+                // 执行任务时是否跳转到终端面板，可以为always，silent，never。具体参见VSC的文档，即使设为never，手动点进去还是可以看到
+                "reveal": "always", 
+                // 设为true后可以使执行task时焦点聚集在终端，但对编译C/C++来说，设为true没有意义
+                "focus": false, 
+                // 不同的文件的编译信息共享一个终端面板
+                "panel": "shared" 
+            },
+            "detail": "Clang: 编译单个文件"
+        },
+        {
+            // 任务名称，与launch.json的preLaunchTask相对应
+            "label": "Clang: 编译多文件",
+            // 可以为process或shell
+            "type": "shell",
+            // 要使用的编译器路径，C语言用clang
+            "command": "/usr/bin/clang",
+            // 编译器后附的参数，反映在终端里即"clang+ arg1 arg2 arg3..."
+            "args": [
+                // 要编译的文件,*是通配符，是编译多文件的关键
+                "${fileDirname}/*.c",
+                // 指定输出文件名极其路径，os X和Linux下不加该参数则默认输出a.out，win下默认a.exe
+                "-o",
+                "${workspaceFolder}/build/debug.out",
+                // 生成和调试有关的信息, 如果加上该参数，编译后不仅会生成.out可执行文件，还会生成后缀为.out.dSYM的文件夹，如果不加，调试器会忽略你设的断点
+                "-g",
+                // 开启额外警告
+                "-Wall",
+                "-Wextra",
+                // 多线程支持
+                "-pthread",
+                // 使用 LLVM lld 链接器而不是默认链接器
+                "-fuse-ld=lld",
+                // 启用 debug 信息优化
+                "-fstandalone-debug",
+                // 诊断信息着色
+                "-fcolor-diagnostics",
+                // 分析所有注释(这其实只需告诉 Clangd ，即添加到 compile_commands.json 中)
+                // Clang 默认只分析 Doxygen 风格("/**", "///"开头)的注释
+                "-fparse-all-comments",
+                // 静态链接libc++，Linux下似乎会出错，出错的话删掉这行就行
+                "-stdlib=libc",
+                // 这里采用c++20标准，C语言改成"-std=c11"
+                "-std=c11",
+            ], // 编译的命令，其实相当于VSC帮你在终端中输了这一串东西
+            "group": {
+                "kind": "build",
+                "isDefault": true // 不为true时command shift B快捷键就要手动选择了
+            },
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "presentation": {
+                "echo": true,
+                // 执行任务时是否跳转到终端面板，可以为always，silent，never。具体参见VSC的文档，即使设为never，手动点进去还是可以看到
+                "reveal": "always",
+                // 设为true后可以使执行task时焦点聚集在终端，但对编译C/C++来说，设为true没有意义
+                "focus": false,
+                // 不同的文件的编译信息共享一个终端面板
+                "panel": "shared"
+            },
+            "detail": "Clang: 编译当前文件夹的所有文件"
+        }
+    ]
+}
