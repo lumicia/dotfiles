@@ -2,13 +2,12 @@
 call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-surround'
 Plug 'junegunn/vim-easy-align'
-"Plug 'hardcoreplayers/spaceline.vim'
 Plug 'liuchengxu/eleline.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Chiel92/vim-autoformat'
 Plug 'Yggdroot/indentLine'
 Plug 'github/copilot.vim'
+Plug 'neovim/nvim-lspconfig'
 
 " Python
 Plug 'tell-k/vim-autopep8'
@@ -18,6 +17,10 @@ Plug 'psf/black'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'mhinz/vim-crates'
+Plug 'simrat39/rust-tools.nvim'
+
+" C++
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 call plug#end()
 
 " --- Settings ---
@@ -171,6 +174,16 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " vim-crate settings
@@ -189,3 +202,10 @@ noremap <F9> :Autoformat<CR>
 
 " coc-explorer settings
 nmap <leader>x <Cmd>CocCommand explorer<CR>
+
+" indentLine
+let g:indent_guides_guide_size = 1
+let g:indent_guides_start_level = 2
+
+" vim-crates
+highlight Crates ctermfg=green ctermbg=NONE cterm=NONE
