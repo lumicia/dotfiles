@@ -1,6 +1,4 @@
 {
-    // Workbench settings
-    "workbench.colorTheme": "Solarized Light Alternate",
     "workbench.colorCustomizations": {
         "terminal.background": "#383737",
         "[Default Dark+]": {
@@ -31,54 +29,107 @@
     "editor.semanticHighlighting.enabled": true,
     "editor.semanticTokenColorCustomizations": {
         "enabled": true,
-        "rules": {
-            "*.abstract": {
-                "fontStyle": "italic",
-            },
-            "*.readonly": {
-                "fontStyle": "bold",
-            },
-            "*.static": {
-                "fontStyle": "bold",
-            },
-            "class": {
-                "fontStyle": "bold",
-                "foreground": "#729de3",
-            },
-            "comment": "#505050",
-            "enum": "#397797",
-            "enumMember": "#397797",
-            "function": {
-                "foreground": "#e5b124",
-            },
-            "macro": {
-                "foreground": "#4fc1ff",
-                "fontStyle": "bold",
-            },
-            "method": {
-                "foreground": "#e5b124",
-                "fontStyle": "underline",
-            },
-            "namespace": {
-                "foreground": "#00d780",
-                "fontStyle": "bold",
-            },
-            "parameter": {
-                "foreground": "#306b72",
-            },
-            "parameter.readonly": {
-                "foreground": "#78d1ff",
-            },
-            "property": {
-                "fontStyle": "underline",
-                "foreground": "#7ca6b7",
-            },
-            "typeParameter": "#31a567",
-            "variable": "#26cdca",
-            "variable.readonly": {
-                "foreground": "#8f5daf",
-                "fontStyle": "bold",
-            },
+        "[Monokai]": {
+            "rules": {
+                "*.abstract": {
+                    "fontStyle": "italic",
+                },
+                "*.readonly": {
+                    "fontStyle": "bold",
+                },
+                "*.static": {
+                    "fontStyle": "bold",
+                },
+                "class": {
+                    "fontStyle": "bold",
+                    "foreground": "#10a3c2",
+                },
+                "comment": "#505050",
+                "enum": "#daa45a",
+                "enumMember": "#daa45a",
+                "function": {
+                    "foreground": "#8cc269",
+                },
+                "macro": {
+                    "foreground": "#e5b124",
+                    "fontStyle": "bold",
+                },
+                "method": {
+                    "foreground": "#8cc269",
+                    "fontStyle": "bold underline",
+                },
+                "namespace": {
+                    "foreground": "#00d780",
+                    "fontStyle": "bold",
+                },
+                "parameter": {
+                    "foreground": "#ec8aa4",
+                },
+                "parameter.readonly": {
+                    "foreground": "#78d1ff",
+                },
+                "property": {
+                    "fontStyle": "underline",
+                    "foreground": "#ef6f48",
+                },
+                "typeParameter": "#31a567",
+                "variable": "#fca106",
+                "variable.readonly": {
+                    "foreground": "#8f5daf",
+                    "fontStyle": "bold",
+                },
+            }
+        },
+        "[Solarized Light Alternate]": {
+            "rules": {
+                "*.abstract": {
+                    "fontStyle": "italic",
+                },
+                "*.readonly": {
+                    "fontStyle": "bold",
+                },
+                "*.static": {
+                    "fontStyle": "bold",
+                },
+                "class": {
+                    "fontStyle": "bold",
+                    "foreground": "#10a3c2",
+                },
+                "comment": "#505050",
+                "enum": "#daa45a",
+                "enumMember": "#daa45a",
+                "function": {
+                    "foreground": "#2c9678",
+                },
+                "macro": {
+                    "foreground": "#e5b124",
+                    "fontStyle": "bold",
+                },
+                "method": {
+                    "foreground": "#2c9678",
+                    "fontStyle": "bold underline",
+                },
+                "namespace": {
+                    "foreground": "#00d780",
+                    "fontStyle": "bold",
+                },
+                "parameter": {
+                    // "foreground": "#c35691",
+                },
+                "parameter.readonly": {
+                    "foreground": "#78d1ff",
+                },
+                "property": {
+                    "fontStyle": "underline",
+                    "foreground": "#ef6f48",
+                },
+                "typeParameter": "#31a567",
+                "variable": "#fca106",
+                "variable.readonly": {
+                    "foreground": "#8f5daf",
+                    "fontStyle": "bold",
+                },
+            }
         }
     },
 
@@ -210,10 +261,14 @@
         }
     ],
 
+    // Remot SSH
+    "remote.SSH.useLocalServer": true,
+
     // Misc settings
     "better-comments.multilineComments": true,
     "winopacity.opacity": 235,
     "git.autofetch": true,
     "markdown.preview.fontSize": 20,
     "leetcode.workspaceFolder": "",
+    "workbench.colorTheme": "Solarized Light Alternate",
 }
