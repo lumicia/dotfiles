@@ -467,6 +467,10 @@ snippet =< "implied by" iAm
 \impliedby
 endsnippet
 
+snippet lrw "leftrightarrow" iAm
+\leftrightarrow
+endsnippet
+
 priority 200
 snippet iff "if and only if" iAm
 \iff
@@ -515,7 +519,7 @@ snippet -- "setminus" iAm
 endsnippet
 
 snippet >= "greater than" iAm
- \geqslant $0
+\geqslant $0
 endsnippet
 
 snippet dis "displaystyle" iAm
@@ -523,35 +527,35 @@ snippet dis "displaystyle" iAm
 endsnippet
 
 snippet <= "less than" iAm
- \leqslant $0
+\leqslant $0
 endsnippet
 
 snippet != "no equals" iAm
- \neq 
+\neq 
 endsnippet
 
 snippet == " constan equals" iAm
- \equiv 
+\equiv 
 endsnippet
 
 snippet sim " sim" iAm
- \sim 
+\sim 
 endsnippet
 
 snippet ~~ " Amppro equals" iAm
- \thickapprox 
+\thickapprox 
 endsnippet
 
 snippet ~= " Amppro equals2" iAm
- \cong
+\cong
 endsnippet
 
 snippet >> ">>" iAm
- \gg
+\gg
 endsnippet
 
 snippet << "<<" iAm
- \ll
+\ll
 endsnippet
 
 
@@ -560,7 +564,7 @@ endsnippet
 # ==== Auto Math Mode ====
 
 snippet lm "inline Math" wA
- $${1}$ $0
+$${1}$ $0
 endsnippet
 
 snippet dm "display Math" wA
@@ -574,6 +578,109 @@ snippet eqt "equation" wA
   ${1}
 \end{equation}
 endsnippet
+
+snippet bde "definition" wA
+\begin{definition}
+  ${1}
+\end{definition}
+endsnippet
+
+snippet bth "theorem" wA
+\begin{theorem}
+  ${1}
+\end{theorem}
+endsnippet
+
+snippet ble "lemma" wA
+\begin{lemma}
+  ${1}
+\end{lemma}
+endsnippet
+
+snippet bco "corollary" wA
+\begin{corollary}
+  ${1}
+\end{corollary}
+endsnippet
+
+snippet bpp "proposition" wA
+\begin{proposition}
+  ${1}
+\end{proposition}
+endsnippet
+
+snippet bex "example" wA
+\begin{example}
+  ${1}
+\end{example}
+endsnippet
+
+snippet bpm "problem" wA
+\begin{problem}
+  ${1}
+\end{problem}
+endsnippet
+
+snippet bps "problemset" wA
+\begin{problemset}
+  ${1}
+\end{problemset}
+endsnippet
+
+snippet bee "exercise" wA
+\begin{exercise}
+  ${1}
+\end{exercise}
+endsnippet
+
+snippet bno "note" wA
+\begin{note}
+  ${1}
+\end{note}
+endsnippet
+
+snippet bpr "proof" wA
+\begin{proof}
+  ${1}
+\end{proof}
+endsnippet
+
+snippet bcn "conclusion" wA
+\begin{conclusion}
+  ${1}
+\end{conclusion}
+endsnippet
+
+snippet bas "assumption" wA
+\begin{assumption}
+  ${1}
+\end{assumption}
+endsnippet
+
+snippet bpy "property" wA
+\begin{property}
+  ${1}
+\end{property}
+endsnippet
+
+snippet bre "remark" wA
+\begin{remark}
+  ${1}
+\end{remark}
+endsnippet
+
+snippet bso "solution" wA
+\begin{solution}
+  ${1}
+\end{solution}
+endsnippet
+
+snippet bint "introduction" wA
+\begin{introduction}
+  ${1}
+\end{introduction}
+endsnippet
+
 
 snippet eqs "equation*" wA
 \begin{equation*}
