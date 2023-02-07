@@ -14,12 +14,10 @@
         "--enable-config",
         "--config-file=~/.config/clangd/config.yaml",
     ],
-
     // CMake
     "cmake.configureOnEdit": false,
     "cmake.configureOnOpen": true,
     "cmake.copyCompileCommands": "",
-
     // LLDB
     "lldb.commandCompletions": true,
     "lldb.dereferencePointers": true,
@@ -27,7 +25,6 @@
     "lldb.launch.expressions": "simple",
     "lldb.showDisassembly": "never",
     "lldb.verboseLogging": true,
-
     // Code Runner
     "code-runner.runInTerminal": true, // 设置成false会在“输出”中输出，无法输入
     "code-runner.saveFileBeforeRun": true, // run code前保存
@@ -39,11 +36,9 @@
         "c": "/usr/bin/clang $fileName -o $workspaceRoot/build/debug.out -g -Wall -Wextra -pthread -fuse-ld=lld -fstandalone-debug -fcolor-diagnostics -fparse-all-comments -stdlib=libc++ -std=c11 && $workspaceRoot/build/debug.out",
         "cpp": "/usr/bin/clang++ $fileName -o $workspaceRoot/build/debug.out -g -Wall -Wextra -pthread -fuse-ld=lld -fstandalone-debug -fcolor-diagnostics -fparse-all-comments -stdlib=libc++ -std=c++20 && $workspaceRoot/build/debug.out"
     },
-
     // Rust
     "rust-analyzer.server.path": "~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/bin/rust-analyzer",
     "rust-analyzer.trace.server": "verbose",
-
     // Python
     "python.languageServer": "Pylance",
     "python.formatting.provider": "black",
@@ -68,7 +63,6 @@
     "python.testing.pytestArgs": [
         "tests"
     ],
-
     // Haskell
     "[haskell]": {
         "editor.formatOnSave": true,
@@ -76,4 +70,121 @@
             "source.organizeImports": true,
         },
     },
+    "[tex]": {
+        "editor.quickSuggestions": {
+            "other": "on",
+            "comments": "on",
+            "strings": "on"
+        },
+        "editor.wordWrap": "on",
+    },
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.intellisense.unimathsymbols.enabled": true,
+    "latex-workshop.intellisense.package.enabled": true,
+    "latex-workshop.latex.tools": [
+        {
+            // 编译工具和命令
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOC%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "xelatex",
+                "%DOCFILE%"
+            ],
+            "env": {}
+        },
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%"
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk 🔃",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "latexmk(xelatex)",
+            "tools": [
+                "xelatexmk"
+            ]
+        },
+        {
+            "name": "xelatex",
+            "tools": [
+                "xelatex"
+            ],
+        },
+        {
+            "name": "pdflatex",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "xe->bib->xe->xe",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdf->bib->pdf->pdf",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.latexindent.path": "/usr/bin/latexindent",
 }
