@@ -11,6 +11,7 @@
     a = add
     b = branch
     c = commit -m
+    ca = commit -am
     cl = clone
     co = checkout
     cob = checkout -b
