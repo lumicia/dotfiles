@@ -587,6 +587,10 @@ $${1}$ $0
 endsnippet
 
 snippet dm "display Math" wA
+\[${1}\]$0
+endsnippet
+
+snippet dm2 "display Math" wA
 $$
 ${1}
 $$$0
@@ -790,6 +794,10 @@ endsnippet
 
 snippet xyzb "Auto (x, y ,z)" iAm
 (x, y, z)
+endsnippet
+
+snippet x0 "Auto x_0" iAm
+x_0
 endsnippet
 
 priority 100
