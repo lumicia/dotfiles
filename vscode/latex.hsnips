@@ -488,7 +488,7 @@ snippet bec "because" iAm
 \because 
 endsnippet
 
-snippet thr "therefore" iAm
+snippet thrf "therefore" iAm
 \therefore 
 endsnippet
 
@@ -583,7 +583,7 @@ endsnippet
 # ==== Auto Math Mode ====
 
 snippet lm "inline Math" wA
-$${1}$ $0
+$${1}$$0
 endsnippet
 
 snippet dm "display Math" wA
@@ -711,6 +711,14 @@ snippet eqs "equation*" wA
 \end{equation*}
 endsnippet
 
+snippet md "differential operator" wA
+\mathrm{d}
+endsnippet
+
+snippet mc "binomial" iAm
+\mathrm{C}_$1
+endsnippet
+
 # ==== Common Environment ====
 
 snippet case "cases" iAm
@@ -819,6 +827,10 @@ snippet beg "begin{} / end{}" bA
 \\begin{$1}
 	$0
 \\end{$1}
+endsnippet
+
+snippet cho "choose" iAm
+\choose 
 endsnippet
 
 # ======== N Series ========
@@ -1061,4 +1073,152 @@ snippet `table(\d)(\d)` "create table with rows and columns" wA
 ``
 rv = createTable(m[1], m[2]);
 ``
+endsnippet
+
+# ==== Greek symbols ====
+snippet Ga "alpha" iAm
+\alpha
+endsnippet
+
+snippet Gb "beta" iAm
+\beta
+endsnippet
+
+snippet Gc "chi" iAm
+\chi
+endsnippet
+
+snippet Gd "delta" iAm
+endsnippet
+
+snippet Ge "epsilon" iAm
+\epsilon
+endsnippet
+
+snippet Gf "phi" iAm
+\phi
+endsnippet
+
+snippet Gg "gamma" iAm
+\gamma
+endsnippet
+
+snippet Gh "eta" iAm
+\eta
+endsnippet
+
+snippet Gi "iota" iAm
+\iota
+endsnippet
+
+snippet Gk "kappa" iAm
+\kappa
+endsnippet
+
+snippet Gl "lambda" iAm
+\lambda
+endsnippet
+
+snippet Gm "mu" iAm
+\mu
+endsnippet
+
+snippet Gn "nu" iAm
+\pi
+endsnippet
+
+snippet Gq "theta" iAm
+\theta
+endsnippet
+
+snippet Gr "rho" iAm
+\rho
+endsnippet
+
+snippet Gs "sigma" iAm
+\sigma
+endsnippet
+
+snippet Gt "tau" iAm
+\tau
+endsnippet
+
+snippet Gu "upsilon" iAm
+\upsilon
+endsnippet
+
+snippet Go "omega" iAm
+\omega
+endsnippet
+
+snippet Gw "wedge" iAm
+\wedge
+endsnippet
+
+snippet Gx "xi" iAm
+\xi
+endsnippet
+
+snippet Gy "psi" iAm
+\psi
+endsnippet
+
+snippet Gz "zeta" iAm
+\zeta
+endsnippet
+
+snippet GD "Delta" iAm
+\Delta
+endsnippet
+
+snippet GF "Phi" iAm
+\Phi
+endsnippet
+
+snippet GG "Gamma" iAm
+\Gamma
+endsnippet
+
+snippet GQ "Theta" iAm
+\Theta
+endsnippet
+
+snippet GL "Lambda" iAm
+\Lambda
+endsnippet
+
+snippet GS "Sigma" iAm
+\Sigma
+endsnippet
+
+snippet GU "Upsilon" iAm
+\Upsilon
+endsnippet
+
+snippet GO "Omega" iAm
+\Omega
+endsnippet
+
+snippet GX "Xi" iAm
+\Xi
+endsnippet
+
+snippet GY "Psi" iAm
+\Phi
+endsnippet
+
+snippet Gve "varepsilon" iAm
+\varepsilon
+endsnippet
+
+snippet Gvf "varphi" iAm
+\varphi
+endsnippet
+
+snippet Gvq "vartheta" iAm
+\vartheta
+endsnippet
+
+snippet Gvs "varsigma" iAm
+\varsigma
 endsnippet
