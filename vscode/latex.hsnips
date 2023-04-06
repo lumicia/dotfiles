@@ -227,7 +227,7 @@ snippet tit "text it" iAm
 \textit{$1}$0
 endsnippet
 
-snippet mcal "mathcal" im
+snippet mcal "mathcal" iAm
 \mathcal{$1}$0
 endsnippet
 
@@ -239,6 +239,22 @@ snippet mbf "mathbf" iAm
 \mathbf{$1}$0
 endsnippet
 
+snippet bga "boldsymbol alpha" iAm
+\bm{\alpha}
+endsnippet
+
+snippet bgb "boldsymbol beta" iAm
+\bm{\beta}
+endsnippet
+
+snippet bgg "boldsymbol gamma" iAm
+\bm{\gamma}
+endsnippet
+
+snippet bz "mathbf 0" iAm
+\bm{0}
+endsnippet
+
 snippet mbm "mathbm" iAm
 \mathbm{$1}$0
 endsnippet
@@ -247,8 +263,16 @@ snippet KK "K" iAm
 ^{\mathrm{K}}
 endsnippet
 
+snippet fk "field K" iAm
+\mathbb{K}
+endsnippet
+
 snippet TT "T" iAm
 ^{\mathrm{T}}
+endsnippet
+
+snippet atr "transposition of A" iAm
+A^{\mathrm{T}}
 endsnippet
 
 snippet RR "R" iAm
@@ -285,6 +309,10 @@ endsnippet
 
 snippet 1bm "1bm" iAm
 \bm{1}
+endsnippet
+
+snippet 0bm "0bm" iAm
+\bm{0}
 endsnippet
 
 priority 100
@@ -412,7 +440,7 @@ endsnippet
 # ==== Logic Symbol ====
 
 
-snippet OOO "empty" iAm
+snippet OE "empty" iAm
 \emptyset
 endsnippet
 
@@ -603,14 +631,14 @@ snippet eqt "equation" wA
 endsnippet
 
 snippet bde "definition" wA
-\begin{definition}
-  ${1}
+\begin{definition}${1}
+  ${2}
 \end{definition}
 endsnippet
 
 snippet bth "theorem" wA
-\begin{theorem}
-  ${1}
+\begin{theorem}${1}
+  ${2}
 \end{theorem}
 endsnippet
 
@@ -626,9 +654,9 @@ snippet bco "corollary" wA
 \end{corollary}
 endsnippet
 
-snippet bpp "proposition" wA
-\begin{proposition}
-  ${1}
+snippet bpr "proposition" wA
+\begin{proposition}${1}
+  ${2}
 \end{proposition}
 endsnippet
 
@@ -662,7 +690,7 @@ snippet bno "note" wA
 \end{note}
 endsnippet
 
-snippet bpr "proof" wA
+snippet bpf "proof" wA
 \begin{proof}
   ${1}
 \end{proof}
@@ -715,7 +743,7 @@ snippet md "differential operator" wA
 \mathrm{d}
 endsnippet
 
-snippet mc "binomial" iAm
+snippet mcb "binomial" iAm
 \mathrm{C}_$1
 endsnippet
 
@@ -846,7 +874,15 @@ ${1:k}_1${2:\\alpha}_1+${1:k}_2${2:\\alpha}_2+\\cdots+${1:k}_${3:n}${2:\\alpha}_
 endsnippet
 
 snippet `\b([ijk])=n` "i=1,2,\cdots,n" iAm
-``rv = m[1]``=1,2,\cdots,n
+``rv = m[1]`` = 1,2,\cdots,n
+endsnippet
+
+snippet san "a_n" iAm
+\{a_n\\}
+endsnippet
+
+snippet snb "b_n" iAm
+\{b_n\\}
 endsnippet
 
 # ======== Common Operator Snippet ========
@@ -916,6 +952,14 @@ endsnippet
 priority 100
 snippet `(?<![\a-zA-Z])(rank|lcm|gcd|atan2|softmax|tr|trace|diag|sign|const)` "math function" iAm
 \\operatorname{``rv = m[1]``}
+endsnippet
+
+snippet lsp "lim sup" iAm
+\limsup_{n \to \infty}
+endsnippet
+
+snippet lif "lim inf" iAm
+\liminf_{n \to \infty}
 endsnippet
 
 # ====== Big Snippet ======
@@ -1089,6 +1133,7 @@ snippet Gc "chi" iAm
 endsnippet
 
 snippet Gd "delta" iAm
+\delta
 endsnippet
 
 snippet Ge "epsilon" iAm
@@ -1124,6 +1169,10 @@ snippet Gm "mu" iAm
 endsnippet
 
 snippet Gn "nu" iAm
+\nu
+endsnippet
+
+snippet Gp "pi" iAm
 \pi
 endsnippet
 
