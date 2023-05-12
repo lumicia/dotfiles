@@ -136,7 +136,7 @@ endsnippet
 
 # == Superscript Operation ==
 
-snippet invs "inverse" iAm
+snippet ivs "inverse" iAm
 ^{-1}
 endsnippet
 
@@ -253,6 +253,10 @@ endsnippet
 
 snippet bz "mathbf 0" iAm
 \bm{0}
+endsnippet
+
+snippet ip "inner product" iAm
+\langle \bm{${1:\alpha}}, \bm{${2:\beta}} \rangle
 endsnippet
 
 snippet mbm "mathbm" iAm
@@ -378,7 +382,7 @@ endsnippet
 # ,  ... -> , \ldots
 priority 101
 snippet `(?<=,)(\s*)\.\.\.` "smart ldots" imA
- \ldots 
+ \ldots
 endsnippet
 
 snippet ** "dot multiply" iAm
@@ -578,6 +582,10 @@ snippet sim " sim" iAm
 \sim 
 endsnippet
 
+snippet sie "simeq" iAm
+\simeq
+endsnippet
+
 snippet ~~ " Amppro equals" iAm
 \thickapprox 
 endsnippet
@@ -615,7 +623,9 @@ $${1}$$0
 endsnippet
 
 snippet dm "display Math" wA
-\[${1}\]$0
+\[
+    ${1}
+\]$0
 endsnippet
 
 snippet dm2 "display Math" wA
@@ -814,6 +824,10 @@ snippet norm iAm
 \left\| ${1} \right\|_{$2}$3
 endsnippet
 
+snippet nv iAm
+\Vert ${1} \Vert $0
+endsnippet
+
 # == Snippet ==
 
 # ==== General Snippet ====
@@ -851,6 +865,10 @@ snippet abs "absolute value" iAm
 \left\vert ${1} \right\vert $0
 endsnippet
 
+snippet nabs "vert" iAm
+\vert ${1} \vert $0
+endsnippet
+
 snippet beg "begin{} / end{}" bA
 \\begin{$1}
 	$0
@@ -859,6 +877,10 @@ endsnippet
 
 snippet cho "choose" iAm
 \choose 
+endsnippet
+
+snippet che "check" iAm
+\check{N}_{\delta}(x_0)
 endsnippet
 
 # ======== N Series ========
@@ -873,8 +895,8 @@ snippet plus "plus" iAm
 ${1:k}_1${2:\\alpha}_1+${1:k}_2${2:\\alpha}_2+\\cdots+${1:k}_${3:n}${2:\\alpha}_${3:n}
 endsnippet
 
-snippet `\b([ijk])=n` "i=1,2,\cdots,n" iAm
-``rv = m[1]`` = 1,2,\cdots,n
+snippet `\b([ijk])=n` "i=1,2,\ldots,n" iAm
+``rv = m[1]`` = 1, 2, \ldots, ${1:n}
 endsnippet
 
 snippet san "a_n" iAm
@@ -955,11 +977,11 @@ snippet `(?<![\a-zA-Z])(rank|lcm|gcd|atan2|softmax|tr|trace|diag|sign|const)` "m
 endsnippet
 
 snippet lsp "lim sup" iAm
-\limsup_{n \to \infty}
+\limsup_{${1:n} \to ${2:\infty}}
 endsnippet
 
 snippet lif "lim inf" iAm
-\liminf_{n \to \infty}
+\liminf_{${1:n} \to ${2:\infty}}
 endsnippet
 
 # ====== Big Snippet ======
@@ -1028,7 +1050,19 @@ snippet vecC "column vector" iAm
 endsnippet
 
 snippet vecR "row vector" iAm
-\begin{pmatrix} ${1:x}_1, ${1:x}_2, \cdots, ${1:x}_${2:n} \end{pmatrix}$0
+\begin{pmatrix} ${1:x}_1, ${1:x}_2, \ldots, ${1:x}_${2:n} \end{pmatrix}$0
+endsnippet
+
+snippet vr "one line row vector" iAm
+(${1:x}_1, ${1:x}_2, \ldots, ${1:x}_${2:n})
+endsnippet
+
+snippet base "linear space base" iAm
+\{\bm{${1:e}_{1}}, \bm{${1:e}_{2}}, \ldots, \bm{${1:e}_{n}}\}
+endsnippet
+
+snippet eb "linear space base e" iAm
+\{\bm{e}_{1}, \bm{e}_{2}, \ldots, \bm{e}_{n}\\}
 endsnippet
 
 priority 300
@@ -1058,6 +1092,14 @@ endsnippet
 
 snippet jacobi "jacobi" iAm
 \\begin{pmatrix}\\frac{\\partial ${1:f}_1}{\\partial ${2:x}_1}&\\frac{\\partial ${1:f}_1}{\\partial ${2:x}_2}&\\cdots&\\frac{\\partial ${1:f}_1}{\\partial ${2:x}_${3:n}}\\\\\\frac{\\partial ${1:f}_2}{\\partial ${2:x}_1}&\\frac{\\partial ${1:f}_2}{\\partial ${2:x}_2}&\\cdots&\\frac{\\partial ${1:f}_2}{\\partial ${2:x}_${3:n}}\\\\\\vdots&\\vdots&\\ddots&\\vdots\\\\\\frac{\\partial ${1:f}_${3:m}}{\\partial ${2:x}_1}&\\frac{\\partial ${1:f}_${3:m}}{\\partial ${2:x}_2}&\\cdots&\\frac{\\partial ${1:f}_${3:m}}{\\partial ${2:x}_${3:n}}\\end{pmatrix}
+endsnippet
+
+snippet mtr "matrix transposition" iAm
+^{\mathrm{T}}
+endsnippet
+
+snippet mth "Hermite matrix transposition" iAm
+^{\mathrm{H}}
 endsnippet
 
 # ==== Dynamic Matrix ====
