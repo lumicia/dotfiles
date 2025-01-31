@@ -1,4 +1,7 @@
 # 希腊/数学/特殊符号快速输入 https://sirlis.cn/posts/rime-shift-switch-zh-en/
+# 希腊字母：/xl
+# 数学符号：/sx
+# 特殊符号：/jh
 patch:
   punctuator/import_preset : symbols
   recognizer/patterns/punct: "^/([A-Z|a-z]*|[0-9]|10)$"
