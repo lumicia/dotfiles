@@ -1,0 +1,4 @@
+# 希腊/数学/特殊符号快速输入 https://sirlis.cn/posts/rime-shift-switch-zh-en/
+patch:
+  punctuator/import_preset : symbols
+  recognizer/patterns/punct: "^/([A-Z|a-z]*|[0-9]|10)$"
