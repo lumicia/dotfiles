@@ -1,26 +1,45 @@
+#import "@preview/hydra:0.6.2": hydra
 #let conf(doc) = {
   set text(size: 16pt, font: "LXGW WenKai GB")
+  set heading(numbering: (..nums) => {
+    nums = nums.pos()
+    if nums.len() == 1 {
+      return numbering("I.", ..nums)
+    } else {
+      numbering("1.", nums.last())
+    }
+  })
   set page(
     paper: "a4",
     margin: (left: 2.5cm, right: 2cm, top: 3cm, bottom: 2.5cm),
-    header: [
-      #set align(right)
-      #set text(8pt)
-      #smallcaps([Chapter ])],
+    header: context {
+      // set align(right)
+      // set text(8pt)
+      // let chap = query(selector(heading).before(here()))
+      // let chapter-name = smallcaps[Chapater]
+      // if chap == () {
+      //   let chapter-after = query(selector(heading).after(here()))
+      //   align(right, chapter-name)
+      //   let body = chapter-after.last().body
+      //   emph(body)
+      // } else {
+      //   let body = chap.last().body
+      //   emph(body)
+      // }
+      // #smallcaps([Chapter #context counter(heading).get().first()])],
+      if calc.odd(here().page()) {
+        align(right, emph(hydra(1)))
+      } else {
+        align(left, emph(hydra(2)))
+      }
+      line(length: 100%)
+    },
     footer: context [
       #set align(center)
       #set text(8pt)
       #counter(page).display("1 / 1", both: true)
     ],
   )
-  set heading(numbering: (..nums) => {
-    nums = nums.pos()
-    if nums.len() == 1 {
-      return numbering("I", ..nums)
-    } else {
-      numbering("1.", nums.last())
-    }
-  })
   let exercise-counter = counter("exercise")
   show heading.where(level: 2): it => {
     exercise-counter.update(0)
