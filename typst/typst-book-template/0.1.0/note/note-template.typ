@@ -13,7 +13,7 @@
 #let bf = it => text(font: "LXGW WenKai GB", weight: "medium")[#it]
 
 #let render-fn-zh(
-  fill: red,
+  fill: silver,
   prefix: none,
   title: "",
   full-title: auto,
@@ -63,7 +63,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: green.lighten(75%)),
 )
 #let (lemma-counter, lemma-box, lemma, show-lemma) = make-frame(
   "lemma",
@@ -71,7 +71,9 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  // render: render-fn-zh.with(fill: rgb("#ace5ee")),
+  render: render-fn-zh.with(fill: rgb("#e6e6fa")),
+  // render: render-fn-zh.with(fill: rgb("#4b0082").lighten(85%)),
 )
 #let (corollary-counter, corollary-box, corollary, show-corollary) = make-frame(
   "corollary",
@@ -79,7 +81,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: red.lighten(85%)),
 )
 #let (axiom-counter, axiom-box, axiom, show-axiom) = make-frame(
   "axiom",
@@ -87,7 +89,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: rgb("#996515").lighten(85%)),
 )
 #let (postulate-counter, postulate-box, postulate, show-postulate) = make-frame(
   "postulate",
@@ -95,7 +97,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: silver.lighten(30%)),
 )
 #let (proposition-counter, proposition-box, proposition, show-proposition) = make-frame(
   "proposition",
@@ -103,7 +105,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: rgb("#6082b6").lighten(65%)),
 )
 #let (assumption-counter, assumption-box, assumption, show-assumption) = make-frame(
   "assumption",
@@ -111,7 +113,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: rgb("#fba0e3").lighten(55%)),
 )
 #let (property-counter, property-box, property, show-property) = make-frame(
   "property",
@@ -119,7 +121,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: rgb("#fffacd")),
 )
 #let (conjecture-counter, conjecture-box, conjecture, show-conjecture) = make-frame(
   "conjecture",
@@ -127,7 +129,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: rgb("#a7fc00").lighten(65%)),
 )
 #let (example-counter, example-box, example, show-example) = make-frame(
   "example",
@@ -135,7 +137,7 @@
   counter: theorem-counter,
   inherited-levels: 2,
   inherited-from: heading,
-  render: render-fn-zh.with(fill: rgb("#ffebcd")),
+  render: render-fn-zh.with(fill: rgb("#89cff0").lighten(30%)),
 )
 
 #let show-env(body) = {
@@ -152,6 +154,3 @@
   show: show-example
   body
 }
-#let set-inherited-levels(value) = (theorem-counter.set-inherited-levels)(value)
-#let set-zero-fill(value) = (theorem-counter.set-zero-fill)(value)
-#let set-leading-zero(value) = (theorem-counter.set-leading-zero)(value)
