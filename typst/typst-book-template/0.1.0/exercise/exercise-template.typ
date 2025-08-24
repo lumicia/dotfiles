@@ -1,6 +1,6 @@
 #import "@preview/hydra:0.6.2": hydra
 #let conf(doc) = {
-  set text(size: 16pt, font: "LXGW WenKai GB")
+  set text(size: 16pt)
   set heading(numbering: (..nums) => {
     nums = nums.pos()
     if nums.len() == 1 {
@@ -45,22 +45,16 @@
     exercise-counter.update(0)
     it
   }
+  show ". ": ". " + h(0.25em, weak: true)
+  show ": ": ": " + h(0.25em, weak: true)
+  show "; ": "; " + h(0.25em, weak: true)
+  show "! ": "! " + h(0.25em, weak: true)
+  show "? ": "? " + h(0.25em, weak: true)
 
   doc
 }
 
-#let scr(it) = text(features: ("ss01",), box($cal(it)$))
-
-#let sf = f => text(f, font: "New Computer Modern Sans Math")
-
-#let rm = it => {
-  text(style: "normal")[#it]
-}
-
-#let op = math.serif[$o p$]
-
-#let section-counter = counter("section")
-
+// Exercise counter
 // 1. Define a function `exercise`, so I can use it like `#exercise[xxx]` to write exercises.
 // 2. Adjust the styles of contents of exercises.
 // 3. Show the number of exercises.
@@ -75,6 +69,15 @@
   }
   #it
 ]
+
+// Math typefaces
+#let scr(it) = text(features: ("ss01",), box($cal(it)$))
+#let sf = f => text(f, font: "New Computer Modern Sans Math")
+#let rm = it => {
+  text(style: "normal")[#it]
+}
+#let op = math.serif[$o p$]
+
 
 // TODO
 // Add a custom configuration that whether the H1 title should be a Roma number or Arab number, the exercise number should be composed of H2 counter and exercise counter.

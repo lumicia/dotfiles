@@ -1,0 +1,7 @@
+[package]
+name="typst-book-template"
+version="0.1.0"
+compiler = "0.13.1"
+entrypoint = "lib.typ"
+keywords = ["book"]
+categories = ["book"]
