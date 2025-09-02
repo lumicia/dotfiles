@@ -9,6 +9,8 @@ patch:
     - {schema: double_pinyin_flypy}
   # 中英文shift切换和英文直接上屏 https://sirlis.cn/posts/rime-shift-switch-zh-en/
   ascii_composer:
+    good_old_caps_lock: true
     switch_key:
       Shift_L: commit_code
       Shift_R: commit_code 
+      Caps_Lock: commit_code
