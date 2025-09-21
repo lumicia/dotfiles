@@ -7,6 +7,10 @@
   // set text(font: "LXGW WenKai GB", size: 14pt, )
   set heading(numbering: "1.1.")
   show heading.where(level: 1): set block(below: 1.2em)
+  show heading.where(level: 2): set block(below: 1em)
+  show heading.where(level: 3): set block(below: 0.8em)
+  show math.equation.where(block: false): math.display
+  set math.cases(gap: 1em)
 
   doc
 }
@@ -26,7 +30,7 @@
       strong(full-title) + sym.space
     }
     // #body
-    #text(font: "LXGW WenKai GB")[#body]
+    #text(font: "LXGW WenKai GB", weight: "light")[#body]
   ]
   if "html" in dictionary(std) {
     // HTML rendering

@@ -57,7 +57,7 @@ endsnippet
 
 context text(context)
 snippet mk "Inline Math" wA
-$${1}$ ${0}
+$${1}$${0}
 endsnippet
 
 context text(context)
@@ -92,7 +92,7 @@ rv = map[m[1]]
 endsnippet
 
 context text(context)
-snippet `(^|\s\s+)(\\)(def|thm|pf|prop|hyp|ex|sol|eg|prob|ans)` "Customized enviroments" bA
+snippet `(^|\s\s+)(\\)(def|thm|pf|prop|hyp|ex|sol|eg|prob|ans|pn|lem|cor)` "Customized enviroments" bA
 ``
 const map = {
   "def": "definition",
@@ -105,6 +105,9 @@ const map = {
   "eg": "example",
   "prob": "problem",
   "ans": "answer",
+  "pn": "proposition",
+  "lem": "lemma",
+  "cor": "corollary",
   }
 rv = m[1] + '#' + map[m[3]] + '['
 ``
@@ -127,7 +130,7 @@ endsnippet
 #-------------------- Greek alphabet
 
 context math(context)
-snippet `(\;)(a|b|g|d|e|z|h|t|i|k|l|m|n|x|r|s|\;t|u|p|vp|c|\;p|o)` "greek alphabet" iA
+snippet `(\;)(a|b|g|d|e|ve|z|h|t|i|k|l|m|n|x|r|s|\;t|u|p|vp|c|\;p|o)` "greek alphabet" iA
 ``
 const map = {
   "a": "alpha",
@@ -135,6 +138,7 @@ const map = {
   "g": "gamma",
   "d": "delta",
   "e": "epsilon",
+  "ve": "epsilon.alt",
   "z": "zeta",
   "h": "eta",
   "t": "theta",
@@ -251,10 +255,10 @@ endsnippet
 
 #-------------------- subscript
 
-context math(context)
-snippet `(.?)(\_)` "subscript" iA
-``rv = m[1]``_($1)$0
-endsnippet
+# context math(context)
+# snippet `(.?)(\_)` "subscript" iA
+# ``rv = m[1]``_($1)$0
+# endsnippet
 
 context math(context)
 snippet `([A-Za-z\)]|\')( _)` "Auto close space for subscript" iA
@@ -333,6 +337,11 @@ snippet imp "imply" wA
 ==> $0
 endsnippet
 
+context math(context)
+snippet imb "implied by" wA
+<== $0
+endsnippet
+
 
 context math(context)
 snippet `(^|\s\s+)(=>|<=>)` "Auto align for arrow" bA
@@ -347,12 +356,17 @@ rv = m[1] + m[2]+ map[m[3]] + " "
 ``
 endsnippet
 
+context math(context)
+snippet arh "arrow.r.hook" iA
+arrow.r.hook
+endsnippet
+
 
 #-------------------- set symbol
 
 context math(context)
 snippet set "set" iA
-{$1}
+{ $1 }$0
 endsnippet
 
 context math(context)
@@ -385,6 +399,35 @@ snippet sse "subset.eq" iA
 subset.eq $0
 endsnippet
 
+context math(context)
+snippet qs "quotient set" iA
+quotientset($1)$0
+endsnippet
+
+context math(context)
+snippet qg "quotient group" iA
+quotientgroup($1, $2)$0
+endsnippet
+
+context math(context)
+snippet inr "intersect" iA
+inter_($1)$0
+endsnippet
+
+context math(context)
+snippet uni "union" iA
+union_($1)$0
+endsnippet
+
+context math(context)
+snippet usq "union.sq" iA
+union.sq 
+endsnippet
+
+context math(context)
+snippet ept "emptyset" iA
+emptyset
+endsnippet
 
 #-------------------- relation symbol
 
@@ -436,12 +479,22 @@ snippet -+ "minus.plus" iA
 minus.plus $0
 endsnippet
 
+context math(context)
+snippet op "plus.circle" iA
+plus.circle $0
+endsnippet
+
+context math(context)
+snippet star "ast.op" iA
+ast.op
+endsnippet
+
 
 #-------------------- calculus symbol
 
 context math(context)
 snippet lim "limit" iA
-lim_(${1:n} -> oo) $0
+lim_(${1:n} -> ${2:oo}) $0
 endsnippet
 
 context math(context)
@@ -454,9 +507,11 @@ snippet linf "liminf" iA
 liminf_(${1:n} -> oo) $0
 endsnippet
 
+# fix crash with tilde by add `( )` before `(d)`, and change
+# `m[2] + m[3]` to `m[3] + m[4]`.
 context math(context)
-snippet `(d)([A-Za-z])( )` "Auto dif" iA
-dif ``rv = m[2] + m[3]``
+snippet `( )(d)([A-Za-z])( )` "Auto dif" iA
+dif ``rv = m[3] + m[4]``
 endsnippet
 
 context math(context)
@@ -464,8 +519,9 @@ snippet `(d)(mu|alpha|sigma|rho|beta|gamma|delta|zeta|eta|varepsilon|epsilon|the
 dif ``rv = m[2] + m[3]``
 endsnippet
 
+# fix crash with underline by add `( )` before `der`.
 context math(context)
-snippet der "derive" iA
+snippet `( )(der)` "derive" iA
 (dif ${1:y})/(dif ${3:x})
 endsnippet
 
@@ -505,25 +561,136 @@ snippet `(\S)(  )` "quad" bA
 ``rv = m[1]`` quad $0
 endsnippet
 
+context math(context)
+snippet hf "one fifth space" iA
+#h(0.2em) $0
+endsnippet
+
+#-------------------- punctuation symbols
+
+context text(context)
+snippet ，， "comma" iA
+, 
+endsnippet
+
+context text(context)
+snippet 。。 "dot" iA
+. 
+endsnippet
+
+context text(context)
+snippet ；； "semicolon" iA
+; 
+endsnippet
+
+context text(context)
+snippet ：： "colon" iA
+: 
+endsnippet
+
+context text(context)
+snippet （（ "parenthesis" iA
+(
+endsnippet
+
+context text(context)
+snippet ¥ "dollar" iA
+\$$1\$ $0
+endsnippet
+
+context math(context)
+snippet dag "dagger" iA
+dagger
+endsnippet
+
 
 #-------------------- Abstract Algebra
 
-context math(context)
-snippet hom "morphism" iA
-rm("Hom")$1(A,B)$0
-endsnippet
+# context math(context)
+# snippet hom "morphism" iA
+# rm("Hom")$1(A, B)$0
+# endsnippet
 
 context math(context)
-snippet isom "isomorphism" iA
+snippet iso "isomorphism" iA
 tilde.equiv $0
 endsnippet
 
+context math(context)
+snippet glr "general linear group in RR" iA
+serif("GL")_(${1:n})(RR)${0}
+endsnippet
+
+context math(context)
+snippet glc "general linear group in CC" iA
+serif("GL")_(${1:n})(CC)${0}
+endsnippet
+
+context math(context)
+snippet slz "special linear group in ZZ" iA
+serif("SL")_(${1:n})(ZZ)${0}
+endsnippet
+
+context math(context)
+snippet slr "special linear group in RR" iA
+serif("SL")_(${1:n})(RR)${0}
+endsnippet
+
+context math(context)
+snippet slc "special linear group in CC" iA
+serif("SL")_(${1:n})(CC)${0}
+endsnippet
+
+context math(context)
+snippet mgz "modular group" iA
+serif("PSL")_(${1:n})(${2:ZZ})${0}
+endsnippet
+
+context math(context)
+snippet org "orthogonal group in RR" iA
+serif("O")_(${1:n})(RR)${0}
+endsnippet
+
+context math(context)
+snippet sog "special orthogonal group in RR" iA
+serif("SO")_(${1:n})(RR)${0}
+endsnippet
+
+context math(context)
+snippet ung "unitary group" iA
+serif("U")(${1:n})${0}
+endsnippet
+
+context math(context)
+snippet sug "special unitary group" iA
+serif("SU")(${1:n})${0}
+endsnippet
+
+context math(context)
+snippet lcs "left coset" iA
+leftcoset($1, $2)$0
+endsnippet
+
+context math(context)
+snippet rcs "right coset" iA
+rightcoset($1, $2)$0
+endsnippet
 
 #-------------------- Analysis
 
 context math(context)
 snippet dd "rm d" iA
 rm("d")$0
+endsnippet
+
+context text(context)
+snippet sgac "sigma algebra" iA
+\$sigma\$-代数
+endsnippet
+
+context text(context)
+snippet sgae "sigma algebra" iA
+\$sigma\$-algebra
 endsnippet
 
 #-------------------- others
@@ -560,3 +727,38 @@ snippet vq "variation of qed" iA
 square
 endsnippet
 
+context math(context)
+snippet fal "forall" iA
+forall $0
+endsnippet
+
+context math(context)
+snippet exi "exists" iA
+exists $0
+endsnippet
+
+context math(context)
+snippet ann "a_n" iA
+a_n
+endsnippet
+
+context math(context)
+snippet aan "A_n" iA
+A_n
+endsnippet
+
+
+context math(context)
+snippet `( )(s)([A-Za-z])( )` "Auto scr font" iA
+scr(``rv = m[3]``)$0
+endsnippet
+
+context math(context)
+snippet `( )(c)([A-Za-z])( )` "Auto cal font" iA
+cal(``rv = m[3]``)$0
+endsnippet
+
+context math(context)
+snippet ne "eq.not" iA
+eq.not
+endsnippet

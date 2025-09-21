@@ -1,14 +1,15 @@
 #import "@preview/hydra:0.6.2": hydra
 #let conf(doc) = {
-  set text(size: 16pt)
-  set heading(numbering: (..nums) => {
-    nums = nums.pos()
-    if nums.len() == 1 {
-      return numbering("I.", ..nums)
-    } else {
-      numbering("1.", nums.last())
-    }
-  })
+  set text(size: 16pt, top-edge: "bounds", bottom-edge: "bounds")
+  // set heading(numbering: (..nums) => {
+  //   nums = nums.pos()
+  //   if nums.len() == 1 {
+  //     return numbering("I.", ..nums)
+  //   } else {
+  //     numbering("1.", nums.last())
+  //   }
+  // })
+  set heading(numbering: "1.")
   set page(
     paper: "a4",
     margin: (left: 2.5cm, right: 2cm, top: 3cm, bottom: 2.5cm),
@@ -45,6 +46,7 @@
     exercise-counter.update(0)
     it
   }
+  // show math.equation.where(block: false): math.display
   show ". ": ". " + h(0.25em, weak: true)
   show ": ": ": " + h(0.25em, weak: true)
   show "; ": "; " + h(0.25em, weak: true)
@@ -70,14 +72,17 @@
   #it
 ]
 
-// Math typefaces
-#let scr(it) = text(features: ("ss01",), box($cal(it)$))
-#let sf = f => text(f, font: "New Computer Modern Sans Math")
-#let rm = it => {
-  text(style: "normal")[#it]
+#let proof(it) = {
+  [_Proof._]
+  h(1em)
+  it
 }
-#let op = math.serif[$o p$]
 
+#let solution(it) = {
+  [_Solution._]
+  h(1em)
+  it
+}
 
 // TODO
 // Add a custom configuration that whether the H1 title should be a Roma number or Arab number, the exercise number should be composed of H2 counter and exercise counter.
