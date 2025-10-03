@@ -9,7 +9,7 @@
   show heading.where(level: 1): set block(below: 1.2em)
   show heading.where(level: 2): set block(below: 1em)
   show heading.where(level: 3): set block(below: 0.8em)
-  show math.equation.where(block: false): math.display
+  // show math.equation.where(block: false): math.display
   set math.cases(gap: 1em)
 
   doc

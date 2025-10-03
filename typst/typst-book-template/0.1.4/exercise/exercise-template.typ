@@ -1,6 +1,7 @@
 #import "@preview/hydra:0.6.2": hydra
 #let conf(doc) = {
-  set text(size: 16pt, top-edge: "bounds", bottom-edge: "bounds")
+  // set text(size: 14pt, top-edge: "bounds", bottom-edge: "bounds")
+  set text(size: 14pt, font: "Times New Roman")
   // set heading(numbering: (..nums) => {
   //   nums = nums.pos()
   //   if nums.len() == 1 {
@@ -41,6 +42,13 @@
       #counter(page).display("1 / 1", both: true)
     ],
   )
+  set par(
+    first-line-indent: 1.5em,
+    spacing: 0.6em,
+  )
+  set list(indent: 0.65em)
+  set enum(indent: 0.65em)
+  show heading.where(level: 2): set block(below: 1em)
   let exercise-counter = counter("exercise")
   show heading.where(level: 2): it => {
     exercise-counter.update(0)
@@ -72,17 +80,17 @@
   #it
 ]
 
-#let proof(it) = {
-  [_Proof._]
-  h(1em)
-  it
-}
+#let proof(it) = rect(width: 100%, radius: 5pt, inset: 10pt, stroke: none, fill: rgb("faebd7"))[
+  _Proof._
+  #h(0.5em)
+  #it
+]
 
-#let solution(it) = {
-  [_Solution._]
-  h(1em)
-  it
-}
+#let solution(it) = rect(width: 100%, radius: 5pt, inset: 10pt, stroke: none, fill: rgb("99cc99").lighten(65%))[
+  _Solution._
+  #h(0.5em)
+  #it
+]
 
 // TODO
 // Add a custom configuration that whether the H1 title should be a Roma number or Arab number, the exercise number should be composed of H2 counter and exercise counter.

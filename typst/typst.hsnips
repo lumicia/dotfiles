@@ -1,4 +1,5 @@
-# https://github.com/KarPhoon/VSCode-hsnip-for-Typst
+# This file originally come from https://github.com/KarPhoon/VSCode-hsnip-for-Typst
+
 # Define contexts for use
 # Use `> Inspect Editor Tokens and Scopes` to find out what context you're in
 global
@@ -10,7 +11,7 @@ function string(context) {return context.scopes.some(s => s.startsWith("string")
 function math(context) {return scope_math(context) == 1 & string(context) == 0;}
 function text(context) {return math(context) == 0;}
 
-//Define vissual variable
+//Define visual variable
 const vscode = require("vscode");
 var editor = vscode.window.activeTextEditor;
 var document = editor.document;
@@ -39,17 +40,22 @@ snippet iff "if and only if" A
 if and only if
 endsnippet
 
+context text(context)
+snippet `([A-Za-z0-9'\$\)\]\}])(,|:|;)` iA
+``rv = m[1] + m[2] + " "``
+endsnippet
+
 
 #-------------------- visual
 
 context math(context)
-snippet `(\\)({)` "underbrace()" iA
-underbrace(``rv=visual``, $1)
+snippet `(\\)({)` "overbrace()" iA
+overbrace(``rv=visual``, $1)
 endsnippet
 
 context math(context)
-snippet `(\\)({)` "underbrace()" iA
-overbrace(``rv=visual``, $1)
+snippet `(\\)(})` "underbrace()" iA
+underbrace(``rv=visual``, $1)
 endsnippet
 
 
@@ -60,6 +66,7 @@ snippet mk "Inline Math" wA
 $${1}$${0}
 endsnippet
 
+# E.g. `$ ,` will be formatted to `$, `
 context text(context)
 snippet `(\$[" "])(\.|\,|\?|\-)` "Auto formatting after Inline Math" iwA
 $``rv = m[2]`` ${0}
@@ -130,7 +137,7 @@ endsnippet
 #-------------------- Greek alphabet
 
 context math(context)
-snippet `(\;)(a|b|g|d|e|ve|z|h|t|i|k|l|m|n|x|r|s|\;t|u|p|vp|c|\;p|o)` "greek alphabet" iA
+snippet `(\;)(a|b|g|d|e|ve|z|h|t|i|k|vk|l|m|n|x|r|vr|s|\;t|u|p|vp|c|\;p|o)` "greek alphabet" iA
 ``
 const map = {
   "a": "alpha",
@@ -144,11 +151,13 @@ const map = {
   "t": "theta",
   "i": "iota",
   "k": "kappa",
+  "vk": "kappa.alt",
   "l": "lambda",
   "m": "mu",
   "n": "nu",
   "x": "xi",
   "r": "rho",
+  "vr": "rho.alt",
   "s": "sigma",
   ";t": "tau",
   "u": "upsilon",
@@ -252,13 +261,43 @@ snippet compl "complement" iA
 ^(complement)
 endsnippet
 
+context math(context)
+snippet sdg "degree" iA
+^degree
+endsnippet
+
+context math(context)
+snippet cis "circle.stroked.small" iA
+^circle.stroked.small
+endsnippet
+
+context math(context)
+snippet rrn "RR^n" iA
+RR^n
+endsnippet
+
+context math(context)
+snippet CCn "CC^n" iA
+CC^n
+endsnippet
+
+context math(context)
+snippet afs "affine algebraic set" iA
+AA_(K)^(${1:n})$0
+endsnippet
+
+context math(context)
+snippet prs "projective space" iA
+PP_(K)^(${1:n})$0
+endsnippet
+
 
 #-------------------- subscript
 
-# context math(context)
-# snippet `(.?)(\_)` "subscript" iA
-# ``rv = m[1]``_($1)$0
-# endsnippet
+context math(context)
+snippet `(.?)(\_)` "subscript" iA
+``rv = m[1]``_($1)$0
+endsnippet
 
 context math(context)
 snippet `([A-Za-z\)]|\')( _)` "Auto close space for subscript" iA
@@ -317,6 +356,11 @@ rv = (map[m[3]] || m[3]) + "(" + m[1] + ")"
 ``
 endsnippet
 
+context math(context)
+snippet ul "underline" iA
+underline(${1:a})$0
+endsnippet
+
 
 #-------------------- arrow
 
@@ -357,8 +401,20 @@ rv = m[1] + m[2]+ map[m[3]] + " "
 endsnippet
 
 context math(context)
-snippet arh "arrow.r.hook" iA
-arrow.r.hook
+snippet art "arrow.r.tail" iA
+arrow.r.tail 
+endsnippet
+
+priority 100
+context math(context) 
+snippet to "arrow.r" wA
+-> 
+endsnippet
+
+priority 100
+context math(context)
+snippet arl "arrow.l" wA
+<- 
 endsnippet
 
 
@@ -410,13 +466,23 @@ quotientgroup($1, $2)$0
 endsnippet
 
 context math(context)
-snippet inr "intersect" iA
+snippet inr "intersect with subscript" iA
 inter_($1)$0
 endsnippet
 
 context math(context)
-snippet uni "union" iA
+snippet ins "intersect" iA
+inter 
+endsnippet
+
+context math(context)
+snippet uni "union with subscript" iA
 union_($1)$0
+endsnippet
+
+context math(context)
+snippet uns "union" iA
+union 
 endsnippet
 
 context math(context)
@@ -429,12 +495,22 @@ snippet ept "emptyset" iA
 emptyset
 endsnippet
 
-#-------------------- relation symbol
+context math(context)
+snippet spe "supset.eq" iA
+supset.eq
+endsnippet
 
 context math(context)
-snippet == "=&" iA
-=& $0
+snippet spn "supset.neq" iA
+supset.neq 
 endsnippet
+
+#-------------------- relation symbol
+
+# context math(context)
+# snippet == "=&" iA
+# =& $0
+# endsnippet
 
 context math(context)
 snippet `(^|\s\s+)(=|>|<|<=|>=)( )` "Auto align for equal" iA
@@ -454,6 +530,11 @@ endsnippet
 context math(context)
 snippet leq "less than or equal slant" iA
 lt.eq.slant $0
+endsnippet
+
+context math(context)
+snippet ne "eq.not" wA
+!= 
 endsnippet
 
 
@@ -487,6 +568,11 @@ endsnippet
 context math(context)
 snippet star "ast.op" iA
 ast.op
+endsnippet
+
+context math(context)
+snippet xx "times" wA
+times 
 endsnippet
 
 
@@ -606,10 +692,15 @@ endsnippet
 
 #-------------------- Abstract Algebra
 
-# context math(context)
-# snippet hom "morphism" iA
-# rm("Hom")$1(A, B)$0
-# endsnippet
+context math(context)
+snippet hom "morphism" iA
+Hom_(${1:R})(${2:A}, ${3:B})$0
+endsnippet
+
+context math(context)
+snippet ext "ext functor" iA
+Ext_(${1:R})^(${2:i})(${3:A}, ${5:B})$0
+endsnippet
 
 context math(context)
 snippet iso "isomorphism" iA
@@ -676,6 +767,128 @@ snippet rcs "right coset" iA
 rightcoset($1, $2)$0
 endsnippet
 
+context math(context)
+snippet inm "integers modulo n" iA
+ZZ slash ${1:n} ZZ
+endsnippet
+
+context math(context)
+snippet mng "matrix group" iA
+M_(n)(G)
+endsnippet
+
+context math(context)
+snippet mnr "matrix ring" iA
+cal(M)_(n)(R)
+endsnippet
+
+context math(context)
+snippet fgl "matrix ring for RR or CC" iA
+frak(g l)_(${1:n})(${2:RR})
+endsnippet
+
+context math(context)
+snippet fsl "special linear ring" iA
+frak(s l)_(n)(${2:RR})
+endsnippet
+
+context math(context)
+snippet fso "special orthogonal ring" iA
+frak(s o)_(${1:n})(${2:RR})
+endsnippet
+
+context math(context)
+snippet fsu "special uninary ring" iA
+frak(s u)(${1:n})$0
+endsnippet
+
+context math(context)
+snippet rmd "R module" iA
+R hyph #h(0em) Mod
+endsnippet
+
+context math(context)
+snippet smd "S module" iA
+S hyph #h(0em) Mod
+endsnippet
+
+context math(context)
+snippet sir "S^(-1)R" iA
+S^(-1)R
+endsnippet
+
+context math(context)
+snippet frp "frak(p)" iA
+frak(p)$0
+endsnippet
+
+context math(context)
+snippet frm "frak(m)" iA
+frak(m)$0
+endsnippet
+
+
+#-------------------- Linear Algebra
+
+context math(context)
+snippet bfv "bold vector v" iA
+bf(v)
+endsnippet
+
+context math(context)
+snippet bfw "bold vector w" iA
+bf(w)
+endsnippet
+
+context math(context)
+snippet ca; "category A" iA
+cat(A)
+endsnippet
+
+context math(context)
+snippet cac "category C" iA
+cat(C)
+endsnippet
+
+context math(context)
+snippet cad "category D" iA
+cat(D)
+endsnippet
+
+context math(context)
+snippet otm "times.circle" iA
+times.circle
+endsnippet
+
+context math(context)
+snippet siva "S^(-1)A" iA
+S^(-1)A
+endsnippet
+
+context math(context)
+snippet sivm "S^(-1)M" iA
+S^(-1)M
+endsnippet
+
+context math(context)
+snippet sivr "S^(-1)R" iA
+S^(-1)R
+endsnippet
+
+#-------------------- Category theory
+
+
+context math(context)
+snippet comp "compose" wA
+compose 
+endsnippet
+
+context math(context)
+snippet `([A-Z])(cat)` "Auto category" iA
+cat(``rv = m[1]``)$0
+endsnippet
+
+
 #-------------------- Analysis
 
 context math(context)
@@ -692,6 +905,17 @@ context text(context)
 snippet sgae "sigma algebra" iA
 \$sigma\$-algebra
 endsnippet
+
+context math(context)
+snippet pmn "phi m to n" iA
+phi: M -> N$0
+endsnippet
+
+context math(context)
+snippet zpn "ZZ plus.circle NN" iA
+ZZ^(plus.circle NN) 
+endsnippet
+
 
 #-------------------- others
 
@@ -747,18 +971,74 @@ snippet aan "A_n" iA
 A_n
 endsnippet
 
-
 context math(context)
-snippet `( )(s)([A-Za-z])( )` "Auto scr font" iA
-scr(``rv = m[3]``)$0
+snippet `(scr)([A-Za-z])( )` "Auto scr font" iA
+scr(``rv = m[2]``)$0
 endsnippet
 
 context math(context)
-snippet `( )(c)([A-Za-z])( )` "Auto cal font" iA
-cal(``rv = m[3]``)$0
+snippet `([A-Za-z])(scr)` "Auto scr font" iA
+scr(``rv = m[1]``)$0
 endsnippet
 
 context math(context)
-snippet ne "eq.not" iA
-eq.not
+snippet `(cal)([A-Za-z])( )` "Auto cal font" iA
+cal(``rv = m[2]``)$0
+endsnippet
+
+context math(context)
+snippet inh "injective hook" iA
+arrow.r.hook 
+endsnippet
+
+context math(context)
+snippet sut "surjective twohead" iA
+arrow.r.twohead 
+endsnippet
+
+context math(context)
+snippet ars "arrow.r.squiggly" iA
+arrow.r.squiggly 
+endsnippet
+
+context math(context)
+snippet mpt "mapsto" iA
+mapsto 
+endsnippet
+
+context math(context)
+snippet etl "ell" iA
+ell
+endsnippet
+
+context math(context)
+snippet blt "bullet" iA
+bullet
+endsnippet
+
+context math(context)
+snippet tb "to the power of bullet" iA
+^(bullet)
+endsnippet
+
+# Insert a space after `,`, `:`
+context math(context)
+snippet `([A-Za-z0-9'\)\]\}])(\,|:)` iA
+``rv = m[1] + m[2] + " "``
+endsnippet
+
+# Insert spaces before and after `=`, `+`
+context math(context)
+snippet `([A-Za-z0-9)\]\}])(=|\+)` iA
+``rv = m[1] + " " + m[2] + " "``
+endsnippet
+
+context math(context)
+snippet `(:)(=)` iA
+``rv = m[1] + m[2] + " "``
+endsnippet
+
+context math(context)
+snippet mcy "mapping cylinder" wA
+MCyl(alpha)^(bullet)
 endsnippet

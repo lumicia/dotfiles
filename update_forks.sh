@@ -1,4 +1,5 @@
 #!/bin/bash
+# either \033 or \e is ok
 blue='\033[1;34m'
 green='\033[1;32m'
 red='\033[1;31m'
@@ -14,7 +15,7 @@ for repo_dir in */; do
 
         # 检查是否已配置 upstream
         if ! git remote | grep -q upstream; then
-            echo "${red}----- Upstream not configured in $repo_dir. Skipping... -----${endcolor}"
+            echo -e "${red}----- Upstream not configured in $repo_dir. Skipping... -----${endcolor}"
             cd ..
             continue
         fi
@@ -22,7 +23,7 @@ for repo_dir in */; do
         # 获取主分支名称（master 或 main）
         default_branch=$(git remote show origin | awk '/HEAD branch/ {print $3}')
         if [ -z "$default_branch" ]; then
-            echo "${red}----- Failed to detect default branch in $repo_dir. Skipping... -----${endcolor}"
+            echo -e "${red}----- Failed to detect default branch in $repo_dir. Skipping... -----${endcolor}"
             cd ..
             continue
         fi
@@ -31,28 +32,28 @@ for repo_dir in */; do
 
         # 切换到主分支
         git checkout "$default_branch" || {
-            echo "${red}----- Failed to checkout $default_branch in $repo_dir. Skipping... -----${endcolor}"
+            echo -e "${red}----- Failed to checkout $default_branch in $repo_dir. Skipping... -----${endcolor}"
             cd ..
             continue
         }
 
         # 拉取 upstream 更新
         git pull upstream "$default_branch" || {
-            echo "${red}----- Failed to pull from upstream in $repo_dir. Skipping... -----${endcolor}"
+            echo -e "${red}----- Failed to pull from upstream in $repo_dir. Skipping... -----${endcolor}"
             cd ..
             continue
         }
 
         # 推送到 origin（GitHub 上的 fork 库）
         git push origin "$default_branch" || {
-            echo "${red}----- Failed to push to origin in $repo_dir. Skipping... -----${endcolor}"
+            echo -e "${red}----- Failed to push to origin in $repo_dir. Skipping... -----${endcolor}"
             cd ..
             continue
         }
 
-        echo "${green}----- Successfully updated $repo_dir -----${endcolor}"
+        echo -e "${green}----- Successfully updated $repo_dir -----${endcolor}"
         cd ..
     fi
 done
 
-echo "${blue}----- Finished updating -----${endcolor}"
+echo -e "${blue}----- Finished updating -----${endcolor}"
